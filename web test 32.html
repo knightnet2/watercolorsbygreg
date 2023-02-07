@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="CoffeeCup HTML Editor (www.coffeecup.com)">
+    <meta name="dcterms.created" content="Wed, 28 Dec 2022 17:57:10 GMT">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title></title>
+	
+	<style>
+	$p: 12px;
+$iron: #263238;
+$font: faune, fantasy;
+
+*, *:before, *:after { box-sizing: border-box; }
+* { -webkit-tap-highlight-color: rgba(0,0,0,0); transform-style: preserve-3d; }
+*:focus { outline: none!important; }
+body, html { height: 100%; }
+
+body {
+	height: 100%;
+	font-family: $font;
+}
+
+.photo-grid {
+	position: relative;
+	font-style: italic;
+	ul {
+		display: grid;
+		grid-template-columns: 1fr;
+		list-style: none;
+		li {
+			width: 100%;
+			overflow: hidden;
+		}
+	}
+	figure, picture, img {
+		display: block;
+		max-width: 100%;
+	}
+	figure {
+		position: relative;
+	}
+	figcaption {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	fieldset {
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-end;
+		width: 100%;
+		height: 100%;
+		padding: $p/4;
+	}
+	.photo-close {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+	}
+	label, .photo-link {
+		cursor: pointer;
+	}
+	.photo-link {
+		will-change: opacity;
+		display: block;
+		position: relative;
+		z-index: 1;
+		padding: $p/4;
+	}
+	.icon {
+		display: block;
+		width: 25px;
+		height: 25px;
+		group, path, polyline, polygon, circle, ellipse, rect {
+			fill: none;
+			fill-rule: evenodd;
+			stroke: white;
+			stroke-width: 7px;
+			stroke-linecap: round;
+			stroke-linejoin: round;
+		}
+	}
+	input {
+		display: none;
+		~ label.photo-link {
+			display: none;
+		}
+		&:checked {
+			~ dl {
+				transform: none;
+				opacity: 1;
+				z-index: 2;
+			}
+			~ .photo-close {
+				z-index: unset;
+			}
+			~ label.photo-link {
+				opacity: 0;
+			}
+		}
+	}
+	dl {
+		transform: translateY(25%);
+		opacity: 0;
+		z-index: 0;
+		transition: all .3s ease-out;
+		will-change: opacity, transform;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		padding: $p;
+		font-size: 24px;
+		color: white;
+		background-color: rgba(darken($iron, 10%), .9);
+		label, .photo-link {
+			position: absolute;
+			right: 0;
+			z-index: 1;
+			padding: $p/2;
+		}
+		label {
+			top: 0;
+		}
+		.photo-link {
+			bottom: 0;
+		}
+		div {
+			position: relative;
+			z-index: 0;
+		}
+		dt, dd {
+			display: inline;
+		}
+		dt {
+			opacity: 0.7;
+			font-weight: bold;
+			&:after {
+				content: ": "
+			}
+		}
+	}
+}
+
+@supports (-webkit-backdrop-filter: blur(10px)) {
+	.photo-grid {
+		dl {
+			background-color: rgba(darken($iron, 10%), .4);
+			-webkit-backdrop-filter: blur(5px);
+			backdrop-filter: blur(5px);
+		}
+	}
+}
+
+@media only screen and (min-width: 600px) {
+	.photo-grid {
+		input ~ label.photo-link {
+			opacity: 0;
+		}
+		li:hover input {
+			~ label.photo-link {
+				opacity: 1;
+			}
+			&:checked ~ label.photo-link {
+				opacity: 0;
+			}
+		}
+		input {
+			~ label.photo-link {
+				display: block;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 800px) {
+	.photo-grid {
+		ul {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+}
+
+@media only screen and (min-width: 2000px) {
+	.photo-grid {
+		ul {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+	}
+}
+
+@media only screen and (min-width: 3000px) {
+	.photo-grid {
+		ul {
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+		}
+	}
+}
+	
+	
+	
+	</style>
+    
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  
+  - @images = [{'name' => '2021-03-02-home', 'date' => '02 March 2021', 'location' => 'San Francisco, CA'}, {'name' => '2021-03-01-agate-beach', 'date' => '01 March 2021', 'location' => 'Patrick’s Point State Park, Trinidad, CA'}, {'name' => '2021-02-28-sunset', 'date' => '28 February 2021', 'location' => 'Crescent Harbor, Crescent City, CA'}, {'name' => '2021-02-27-sunset', 'date' => '27 February 2021', 'location' => 'Waldport, OR'}, {'name' => '2021-02-26-sunset', 'date' => '26 February 2021', 'location' => 'Waldport, OR'}, {'name' => '2021-02-26-snow-2', 'date' => '26 February 2021', 'location' => 'Willamette National Forest, OR'}, {'name' => '2021-02-26-rainforest', 'date' => '26 February 2021', 'location' => 'Cascadia, OR'}, {'name' => '2021-02-11-chinatown', 'date' => '11 February 2021', 'location' =>  'Chinatown, San Francisco, CA'}]
+
+%main{:ontouchstart => true}
+	%section.photo-grid
+		%ul.grid-isotope
+			- @images.each do |image|
+				%li.photo-grid-item
+					%figure
+						%picture
+							%source{:srcset => "https://gabriellew.ee/static/images/photography/#{image['name']}.jpg, https://gabriellew.ee/static/images/photography/#{image['name']}.jpg 2x", :media => "(max-width: 3000px)"}
+							%img{:src => "https://gabriellew.ee/static/images/photography/#{image['name']}.jpg", :alt => ""}
+						%figcaption
+							%fieldset
+								%input{:id => "#{image['name']}", :type => "checkbox"}
+								%label.photo-close{:for => "#{image['name']}"}
+								%label.photo-link{:for => "#{image['name']}"}
+									%svg.icon{:viewBox => "0 0 100 100"}
+										%circle{:cx => "49", :cy => "49", :r => "36"}
+										%path{:d => "M45,69 L55,69 M45,39 L50,39 L50,69 M49.5,29 L50,29"}
+								%dl
+									%label{:for => "#{image['name']}"}
+										%svg.icon{:viewBox  => "0 0 100 100"}
+											%polyline{:points => "14 32 50 68 86 32"}
+									%div
+										%dt Date
+										%dd= image['date']
+									%div
+										%dt Location
+										%dd= image['location']
+									%div
+										%dt Camera
+										%dd iPhone 12 Pro Max
+									%div
+										%dt Editor
+										%dd VSCO
+									%a.photo-link{:target => "_blank", :href => "https://gabriellew.ee/static/images/photography/#{image['name']}.jpg", :tabindex => "-1"}
+										%svg.icon{:viewBox => "0 0 100 100"}
+											%path{:d => "M82,38 L82,78.9930191 C82,80.6537288 80.663269,82 78.9989882,82 L21.0010118,82 C19.3435988,82 18,80.663269 18,78.9989882 L18,21.0010118 C18,19.3435988 19.3408574,18 21.0069809,18 L62,18 M88.9559283,10.8111066 L57.9878833,42.132705 M69.2453268,10.8994949 L89.0443166,10.8994949 L89.0443166,30.6984848"}
+								
+  
+  
+  
+  
+  
+  
+  
+  
+
+  </body>
+</html>
